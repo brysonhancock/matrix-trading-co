@@ -11,10 +11,12 @@ app.use(cors());
 app.use(express.json());
 
 // Connect to Database
-connectDB();
+connectDB().then(() => {
+    // Routes
+    app.use('/api/auth', require('./routes/auth'));
 
-// Routes
-app.use('/api/auth', require('./routes/auth'));
-
-const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+    const PORT = process.env.PORT || 5000;
+    app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
+}).catch((error) => {
+    console.error('Failed to connect to the database:', error.message);
+});
