@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login - Matrix Trading Co</title>
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+    <div class="matrix-bg"></div>
+    <div class="container">
+        <h1>Login</h1>
+        <form id="login-form">
+            <input type="email" id="login-email" placeholder="Email" required><br>
+            <input type="password" id="login-password" placeholder="Password" required><br>
+            <button type="submit">Login</button>
+        </form>
+        <p>Don't have an account? <a href="signup.html">Sign up here</a></p>
+    </div>
+
+    <script>
+        document.getElementById("login-form").addEventListener("submit", function(event) {
+            event.preventDefault();
+
+            // Hardcoded test user credentials
+            const testEmail = "testuser@matrix.com";
+            const testPassword = "password123";
+
+            const enteredEmail = document.getElementById("login-email").value;
+            const enteredPassword = document.getElementById("login-password").value;
+
+            if (enteredEmail === testEmail && enteredPassword === testPassword) {
+                alert("Login successful!");
+                window.location.href = "dashboard.html";
+            } else {
+                alert("Invalid email or password. Try again.");
+            }
+        });
+    </script>
+
+    <script src="assets/js/script.js"></script>
+</body>
+</html>
